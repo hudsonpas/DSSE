@@ -1,2 +1,2 @@
 # DSSE
-DSSE - Data Science for Smart Environments
+Data Science for Smart Environments
