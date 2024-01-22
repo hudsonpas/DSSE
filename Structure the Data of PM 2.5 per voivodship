@@ -1,5 +1,3 @@
-#Script for structure the data of PM 2.5
-
 import openpyxl
 from openpyxl import load_workbook
 from collections import defaultdict
