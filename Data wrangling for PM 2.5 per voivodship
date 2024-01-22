@@ -1,0 +1,49 @@
+#Script for structure the data of PM 2.5
+
+import openpyxl
+from openpyxl import load_workbook
+from collections import defaultdict
+
+#Open the CSV file
+file_path = 'PM 2.5_voivodeship.xlsx'
+wb = openpyxl.load_workbook(file_path)
+sheet = wb.active
+
+# Process the data
+processed_data = {}
+for row in range(2, sheet.max_row + 1):  #Row 1 contains headers
+    year = sheet.cell(row=row, column=1).value
+    voivodeship = sheet.cell(row=row, column=2).value
+    avg_time = sheet.cell(row=row, column=7).value
+    avg_pm25 = sheet.cell(row=row, column=8).value
+
+    if avg_time == '24g':
+        if year not in processed_data:
+            processed_data[year] = {'year': year, 'data': {voivodeship: avg_pm25}}
+        else:
+            if voivodeship not in processed_data[year]['data']:
+                processed_data[year]['data'][voivodeship] = avg_pm25
+            else:
+                processed_data[year]['data'][voivodeship] = (processed_data[year]['data'][voivodeship] + avg_pm25) / 2
+
+
+#Export the modified data as Excel document
+output_file_path = "Clean_PM 2.5.xlsx"
+output_wb = openpyxl.Workbook()
+output_sheet = output_wb.active
+
+#Write headers
+output_sheet.cell(row=1, column=1, value="Year")
+output_sheet.cell(row=1, column=2, value="Voivodeship")
+output_sheet.cell(row=1, column=3, value="Avg_concentration")
+
+#Write processed data
+row_index = 2
+for year, data in processed_data.items():
+    for voivodeship, avg_pm25 in data['data'].items():
+        output_sheet.cell(row=row_index, column=1, value=data['year'])
+        output_sheet.cell(row=row_index, column=2, value=voivodeship)
+        output_sheet.cell(row=row_index, column=3, value=avg_pm25)
+        row_index += 1
+
+output_wb.save(output_file_path)
