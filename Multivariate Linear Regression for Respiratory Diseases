@@ -1,0 +1,25 @@
+# importing modules and packages
+import pandas as pd
+import statsmodels.formula.api as smf
+
+# importing data from vehicle transaction
+doc1 = pd.read_excel('Clean_PM 2.5.xlsx')
+doc2 = pd.read_excel('Diseases of the respiratory system.xlsx')
+
+merged_data = pd.merge(doc1,doc2, on=['Year', 'Voivodeship'])
+
+# Define the multivariate linear regression model
+model = smf.ols('Respiratory_Diseases ~ Voivodeship + Avg_concentration + Year', data=merged_data)
+
+# Fit the model
+result = model.fit()
+
+# Print the summary of the model
+print(result.summary())
+
+# Convert the results into a string format
+results_str = str(result.summary())
+
+# Save this string to a txt file
+with open('results of multivariate linear regression.txt', 'w') as file:
+    file.write(results_str)
