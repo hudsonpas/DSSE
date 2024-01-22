@@ -2,7 +2,7 @@
 import pandas as pd
 import statsmodels.formula.api as smf
 
-# importing data from vehicle transaction
+# importing data
 doc1 = pd.read_excel('Clean_PM 2.5.xlsx')
 doc2 = pd.read_excel('Diseases of the respiratory system.xlsx')
 
