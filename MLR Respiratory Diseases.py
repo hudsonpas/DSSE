@@ -108,7 +108,7 @@ plt.ylim(bottom=0, top=max_value+2)
 plt.axhline(y=5, color='black', linestyle='-', linewidth=1)
 
 # Add the word "WHO" at the top of the line
-plt.text(0.7, 0.25, 'WHO', transform=plt.gcf().transFigure, fontsize=12, fontweight='bold', color='black', verticalalignment='bottom')
+plt.text(0.7, 0.22, 'WHO', transform=plt.gcf().transFigure, fontsize=12, fontweight='bold', color='black', verticalalignment='bottom')
 
 # Add light grey color for the area above the line on y-axis value = 5
 plt.axhspan(5, max_value+2, color='lightgrey', alpha=0.3)
