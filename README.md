@@ -16,7 +16,7 @@ The folder "Notebooks for GRS35306 Group 2" contains the following notebooks:
 
 The folder "Raw Data" contains some of the original data used in the notebooks.
 
-The folder "Report and Presentation" contains all of our deliveries during the course: project plan, report on ethics and final presentation.
+The folder "Report and Presentation" contains all of our deliveries during the course: project plan (presentation and report), report on ethics, project update presentation and final presentation.
 
 The folder "images" contains some figures that are loaded in the notebooks.
 
